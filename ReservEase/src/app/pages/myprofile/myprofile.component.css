@@ -1,0 +1,146 @@
+/* Custom Navigation Styles */
+.navbar {
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding-left: 100px;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    padding: 10px 15px;
+    color: #333;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #1abc9c;
+    background-color: #f7f7f7; /* Add background color on hover */
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #333;
+  }
+  
+  .navbar-toggler-icon:focus {
+    outline: none;
+  }
+  
+  /* Responsive Navigation */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      margin-top: 10px;
+    }
+  
+    .navbar-collapse {
+      background-color: #a4a6bb;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+  }
+  
+  /* Additional Styles */
+  .navbar {
+    background-color: #fff; /* Change background color */
+  }
+  
+  .navbar-nav .nav-link {
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #9784d5; /* Change hover color */
+  }
+  
+  .navbar-collapse {
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+  }
+  
+  /* Animated underline effect on hover */
+  .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1abc9c; /* Underline color */
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+  
+
+/* Title */
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333; /* Dark text color */
+  }
+  
+  /* Profile Table */
+  #profileTable {
+    width: 70%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 2px solid #ddd; /* Light gray border */
+  }
+  
+  #profileTable td {
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ddd;
+  }
+  
+  #profileTable input[type="text"],
+  #profileTable input[type="number"],
+  #profileTable input[type="email"] {
+    width: calc(100% - 14px);
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px; /* Reduced font size */
+    color: #555; /* Medium gray text color */
+  }
+  
+  /* Edit Button */
+  .container {
+    text-align: center;
+    margin-top: 20px; /* Add top margin */
+  }
+  
+  .edit-btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Hover Effect for Table Rows */
+  #profileTable tr:hover {
+    background-color: #f5f5f5; /* Light gray background color on hover */
+  }

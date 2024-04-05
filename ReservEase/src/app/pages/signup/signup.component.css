@@ -1,0 +1,214 @@
+.container {
+    max-width: 100%; /* Set maximum width to 100% */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding to the container */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    background-color: #7a82c9;
+    height:730px;
+}
+.col {
+    width: 100%; /* Set width to full width */
+    display: flex;
+    justify-content: space-around; /* Align items with space around them */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    padding: 10px;
+}
+
+h3 {
+    text-align: center;
+    color: #5e4fb0;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"]::after 
+{
+    color: black; /* Set color to black */
+    margin-left: 5px; /* Add some space between the input and the asterisk */
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px; /* Set a fixed width */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Make it a block-level element */
+    font-size: 16px; /* Increase font size */
+    font-weight: bold; /* Add bold font weight */
+    text-transform: uppercase; /* Uppercase text */
+    text-align: center; /* Align text to center */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Add box shadow */
+}
+
+input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+.signin-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.signin-link:hover {
+    color: #0056b3;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* Styles for the .abc class */
+.abc {
+    background-color: white;
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    font-size: 15px; /* Set font size for text */
+    height: 550px; /* Set height */
+}
+
+/* Styles for input fields within .abc */
+.abc input[type="text"],
+.abc input[type="password"],
+.abc input[type="email"],
+.abc input[type="date"] {
+    width: 98%;
+    height: 40px; /* Increase height for better visibility and interaction */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px; /* Set font size for input fields */
+    
+}
+
+/* Styles for input fields within .bcd */
+.bcd input[type="text"],
+.bcd input[type="password"],
+.bcd input[type="email"],
+.bcd input[type="date"] {
+    width: 98%;
+    height: 40px; /* Increase height for better visibility and interaction */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 17px; /* Set font size for input fields */
+}
+
+
+/* Styles for the .bcd class */
+.bcd {
+    background-color: #636dca;
+    color: white;
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    font-size: 15px; /* Set font size for text */
+    height: 550px; /* Set height */
+}
+
+/* Styles for headings within .bcd */
+.bcd h3 {
+    font-size: 24px; /* Increase font size for headings */
+    margin-bottom: 20px; /* Add margin below headings */
+}
+
+
+/* Style for the checkbox within .bcd */
+.bcd input[type="checkbox"] {
+    margin-right: 10px; /* Add space between checkbox and label */
+    vertical-align: middle; /* Align checkbox vertically with text */
+}
+
+/* Style for links within .bcd */
+.bcd a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold; /* Make the link text bold */
+}
+
+/* Hover effect for links within .bcd */
+.bcd a:hover {
+    color: #ccc; /* Change link color on hover */
+}
+
+.bcd h3{
+    color:white;
+}
+
+table {
+    border-collapse: collapse; /* Merge table borders */
+    font-family: Arial, sans-serif;
+    width: 500px; /* Decrease table width */
+    font-size: 10px; /* Decrease font size */
+}
+
+td {
+    padding: 5px; /* Decrease padding */
+}
+
+a {
+    text-decoration: None;
+    color: white;
+}
+
+a:hover {
+    color: orange;
+}
+
+.d-flex {
+    display: flex; /* Make the element a flex container */
+}
+
+.flex-wrap {
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line if needed */
+}
+
+.a
+{
+    color:white;
+}
+
+.cls {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+h1 {
+    color: white;
+    font-size: 60px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input[type="checkbox"] {
+    width: 20px; /* Set width of the custom checkbox */
+    height: 20px; /* Set height of the custom checkbox */
+    background-color: #fff; /* Background color of the custom checkbox */
+    border: 2px solid #ccc; /* Border of the custom checkbox */
+    border-radius: 5px; /* Border radius of the custom checkbox */
+    margin-right: 5px; /* Margin between checkbox and label */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+table tr {
+    margin-bottom: 10px; /* Add margin between each row */
+}
+
+body
+{
+    background-color: #636dca;
+}

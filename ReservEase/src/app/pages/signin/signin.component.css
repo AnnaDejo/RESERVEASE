@@ -1,0 +1,115 @@
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #7a82c9;
+    height: 730px;
+}
+
+.col {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px; /* Set a fixed width */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Make it a block-level element */
+    font-size: 16px; /* Increase font size */
+    font-weight: bold; /* Add bold font weight */
+    text-transform: uppercase; /* Uppercase text */
+    text-align: center; /* Align text to center */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Add box shadow */
+}
+
+input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+
+h1 {
+    color: #636dca;
+    font-size: 60px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table {
+    margin: auto; /* Center the table horizontally */
+    width: 500px;
+    height: 200px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+td {
+    padding: 10px;
+}
+
+.cls {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+
+
+.xyz {
+    margin: auto;
+    text-align: center;
+    font-size: 17px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+.bcd input[type="text"],
+.bcd input[type="password"]{
+    width: 98%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+.bcd{
+    background-color: white;
+    color: #636dca;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    height: 350px;
+    width: 600px;
+    margin: auto;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;
+}
+
+
+
+.bcd a {
+    text-decoration: none;
+    color: #636dca;
+    font-weight: bold;
+}
+
+.bcd a:hover {
+    color: #ccc;
+}
+

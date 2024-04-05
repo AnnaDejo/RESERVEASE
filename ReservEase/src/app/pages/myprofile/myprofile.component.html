@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/myaccount">My Account</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="#">My Reservations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reservations">New Reservation</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="title">PROFILE</div>
+
+<table id="profileTable">
+  <tr><td>First Name</td><td><input type="text" disabled> {{ user.fname }}</td></tr>
+  <tr><td>Last Name</td><td><input type="text" disabled>{{ user.lname }}</td></tr>
+  <tr><td>User Name</td><td><input type="text"  disabled>{{ user.username }}</td></tr>
+  <tr><td>Employee Id</td><td><input type="text"  disabled>{{ user.eid }}</td></tr>
+  <tr><td>Designation</td><td><input type="text" disabled>{{ user.designation }}</td></tr>
+  <tr><td>Phone Number</td><td><input type="number" disabled>{{ user.phone }}</td></tr>
+  <tr><td>Email : </td><td><input type="email"  disabled>{{ user.mail }}</td></tr>
+</table>
+<br><br>
+<div class="container">
+  <button class="edit-btn" onclick="editProfile()">Edit</button>
+</div>
