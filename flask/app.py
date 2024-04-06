@@ -1,12 +1,16 @@
+import json
 from flask import Flask, jsonify, redirect, render_template, request, session
 from flask_cors import CORS
 from pymongo import MongoClient
-from bson import ObjectId
+from bson import ObjectId, json_util
 
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key" 
 CORS(app) 
+
+#app.config['MONGO_URI'] = 'mongodb://localhost:27017/your_database_name'
+#mongo = PyMongo(app)
 
 mongo_url = "mongodb+srv://FathimaIsmail:greencurtain@reservease.lxifjr8.mongodb.net/"
 
@@ -29,12 +33,14 @@ def signin():
     #print(password)
     # Query MongoDB to find user with provided credentials
     user = users_collection.find_one({'username': username, 'password': password})
-    #print(user)
+    #print(json.dumps (user))
     if user:
         # If user exists, set session variables for authentication
         session['user_id'] = str(user['_id'])
         session['username'] = user['username']
-        return {"success":"true"}
+        user_json = json.loads(json_util.dumps(user))
+        return jsonify({'success': True, 'user': user_json})
+       # return  {"success":"true"}
        # return redirect('/dashboard')  # Redirect to dashboard or any other page
     else:
         return {"result":"false"}  # Show error message
@@ -71,6 +77,15 @@ def get_user_data():
     username = request.headers.get('username')
     user_data = users_collection.db.users.find_one({'username': username})
     return jsonify(user_data)
+
+@app.route('/api/user_data', methods=['GET'])
+def getUserData():
+    username = request.headers.get('username')
+    user_data = users_collection.db.users.find_one({'username': username})
+    if user_data:
+        return jsonify(user_data)
+    else:
+        return jsonify({'message': 'User not found'}), 404
 
 if __name__ == '_main_':
     app.run(debug=True)

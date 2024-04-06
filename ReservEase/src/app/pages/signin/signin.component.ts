@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthenticationService } from '../../authentication.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class SigninComponent {
 
   constructor(private http: HttpClient,private router: Router) {}
 
-
+  
   signin(): void {
     const formData = {
       username: this.username,
@@ -32,8 +33,9 @@ export class SigninComponent {
         
         if (response.success) {
           // Redirect user to dashboard or another page
+          localStorage.setItem('user', JSON.stringify(response.user));
           console.log("Login Success")
-          this.router.navigate(['/myprofile/username']);
+          this.router.navigate(['/myprofile']);
          
         } else {
           // Display error message to the user
@@ -43,4 +45,16 @@ export class SigninComponent {
         }
       });
   }
+ 
+  
+/*
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(response => {
+      // Assuming the response contains user details upon successful login
+      if (response && response.user) {
+        localStorage.setItem('user', JSON.stringify(response.user));
+        this.router.navigate(['/myprofile']);
+      }
+    });
+  }*/
 }

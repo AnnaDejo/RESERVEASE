@@ -10,7 +10,7 @@ export const routes: Routes = [
     {path:'',component:HomeComponent},
     {path:'signin',component:SigninComponent},
     {path:'signup',component:SignupComponent},
-    {path:'myprofile/:username',component:MyprofileComponent},
+    {path:'myprofile',component:MyprofileComponent},
     {path:'reservations',component:ReservationsComponent},
     {path:'resources',component:ResourcesComponent}
 

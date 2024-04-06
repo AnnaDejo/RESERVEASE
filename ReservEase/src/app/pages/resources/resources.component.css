@@ -1,0 +1,126 @@
+.card-img-top {
+    max-width: 100%;
+    height: 250px;
+}
+
+.row {
+    display: flex;
+}
+
+.card-text {
+    height: 140px;
+}
+
+.card {
+    padding:10px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 10px;
+    border: 3px solid #ccc; /* Add border */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 8px; /* Adjust border radius */
+    margin-bottom: 10px; /* Add margin to the bottom */
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.card-img-top {
+    padding:10px;
+    max-width: 100%;
+    height: 250px;
+    border-radius: 8px; /* Adjust border radius */
+    margin-bottom: 10px; /* Add margin to the bottom */
+    border: 1px solid #ccc;
+}
+
+.card-title {
+    font-size: 20px; /* Increase font size for card title */
+    margin-bottom: 15px; /* Add margin below card title */
+}
+
+.card-text {
+    font-size: 16px; /* Adjust font size for card text */
+}
+
+.card-footer {
+    background-color: #f8f9fa; /* Set background color for card footer */
+    padding: 10px; /* Add padding to card footer */
+    border-bottom-left-radius: 10px; /* Adjust border radius for card footer */
+    border-bottom-right-radius: 10px; /* Adjust border radius for card footer */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.btn-primary:focus {
+    box-shadow: none; /* Remove box shadow on focus */
+}
+
+.card-link {
+    color: #007bff; /* Set color for card links */
+    text-decoration: none; /* Remove underline from card links */
+}
+
+.card-link:hover {
+    text-decoration: underline; /* Underline card links on hover */
+}
+
+
+
+/* styles.css */
+
+.stylish-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    float: right; /* Move the button to the right */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.stylish-button:hover {
+    background-color: #45a049; /* Darken the background color on hover */
+}
+
+.pqr {
+    display: flex;
+    justify-content: space-between; /* Move the button to the right */
+    align-items: center; 
+  }
+
+.pqr h1 {
+    margin: 0;
+    float:center;
+    font-size: 60px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color:#010f1e
+}
+

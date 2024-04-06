@@ -23,14 +23,14 @@
 
 <div class="title">PROFILE</div>
 
-<table id="profileTable">
-  <tr><td>First Name</td><td><input type="text" disabled> {{ user.fname }}</td></tr>
-  <tr><td>Last Name</td><td><input type="text" disabled>{{ user.lname }}</td></tr>
-  <tr><td>User Name</td><td><input type="text"  disabled>{{ user.username }}</td></tr>
-  <tr><td>Employee Id</td><td><input type="text"  disabled>{{ user.eid }}</td></tr>
-  <tr><td>Designation</td><td><input type="text" disabled>{{ user.designation }}</td></tr>
-  <tr><td>Phone Number</td><td><input type="number" disabled>{{ user.phone }}</td></tr>
-  <tr><td>Email : </td><td><input type="email"  disabled>{{ user.mail }}</td></tr>
+<table  *ngIf="user" id="profileTable">
+  <tr><td>First Name</td><td><input type="text" disabled placeholder= "{{ user.fname }}"></td></tr>
+  <tr><td>Last Name</td><td><input type="text" disabled placeholder="{{ user.lname }}"></td></tr>
+  <tr><td>User Name</td><td><input type="text" placeholder="{{ user.username }}"  disabled></td></tr>
+  <tr><td>Employee Id</td><td><input type="text" placeholder="{{ user.eid }}" disabled></td></tr>
+  <tr><td>Designation</td><td><input type="text"placeholder="{{ user.designation }}" disabled></td></tr>
+  <tr><td>Phone Number</td><td><input type="number" placeholder="{{ user.phone }}"disabled></td></tr>
+  <tr><td>Email : </td><td><input type="email" placeholder="{{ user.mail }}" disabled></td></tr>
 </table>
 <br><br>
 <div class="container">
