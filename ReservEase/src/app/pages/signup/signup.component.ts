@@ -14,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 export class SignupComponent {
   fname:string | undefined;lname:string | undefined;eid:string | undefined;username: string | undefined;password: string | undefined;
   designation:string|undefined;state:string | undefined;region:string | undefined;phone:Int16Array | undefined;
-  mail: string | undefined;
+  mail: string | undefined;myreservation=[]
   
 
   constructor(private http: HttpClient,private router: Router) { }
@@ -22,7 +22,7 @@ export class SignupComponent {
   signup() {
     const userData = {
       lname:this.lname,fname:this.fname,eid:this.eid,designation:this.designation,state:this.state,region:this.region,
-      username: this.username,phone:this.phone,mail: this.mail,password: this.password
+      username: this.username,phone:this.phone,mail: this.mail,password: this.password,myreservation: this.myreservation
     };
 
     this.http.post('http://localhost:5000/signup', userData)

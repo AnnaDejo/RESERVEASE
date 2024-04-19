@@ -20,6 +20,7 @@ client = MongoClient(mongo_url)
 # Access the database
 db = client["ReservEase"]
 users_collection = db["users"]
+resources_collection=db["resources"]
 
 
 
@@ -72,20 +73,34 @@ def signup():
     #return {"success":"true"}
     return jsonify({'message': 'User signed up successfully'})
 
-@app.route('/api/user_data', methods=['GET'])
-def get_user_data():
-    username = request.headers.get('username')
-    user_data = users_collection.db.users.find_one({'username': username})
-    return jsonify(user_data)
-
-@app.route('/api/user_data', methods=['GET'])
-def getUserData():
-    username = request.headers.get('username')
-    user_data = users_collection.db.users.find_one({'username': username})
-    if user_data:
-        return jsonify(user_data)
+@app.route('/product/<id>' , methods=['POST'])
+def get_product(id):
+    resource = [{k:v for k,v in i.items() if k!='_id'} for i in resources_collection.find({'name':id})]
+    print(jsonify(resource))
+    if resource:
+        return jsonify(resource)
     else:
-        return jsonify({'message': 'User not found'}), 404
+        return jsonify({"error": "Product not found"}), 404
+
+@app.route('/product' , methods=['GET'])
+def get_products():
+    resource = [{k:v for k,v in i.items() if k!='_id'} for i in resources_collection.find()]
+    print(jsonify(resource))
+    if resource:
+        return jsonify(resource)
+    else:
+        return jsonify({"error": "Product not found"}), 404   
+
+@app.route('/myreservation/<name>/<username>' , methods=['GET'])
+def update_reservations(name,username):
+    count=resources_collection.find_one({'name':name})['avail']
+    resources_collection.update_one({'name':name},{'$set':{'avail':count-1}})
+    myreservations=users_collection.find_one({'username':username})['myreservations']
+    myreservations.append(name)
+    users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
+    print(myreservations)
+    return jsonify({"result":"Booking Success","count":count-1,'name':name})
+
 
 if __name__ == '_main_':
     app.run(debug=True)

@@ -1,0 +1,11 @@
+.flex{
+    display: flex;
+    border: 2px solid rgb(91, 91, 112);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.p2{
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(101, 101, 132);
+}
