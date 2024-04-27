@@ -3,18 +3,21 @@
     <a routerLink="/reservations"><button class="stylish-button">&larr; Back</button></a>
 </div>
   <br>
-<div class="container" *ngFor="let product of products">
-  <div class="card" style="width: 18rem;">
-    <img src="{{product.image}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{product.name}}</h5>
-      <p *ngIf="status?.name==product.name"  class="card-text">{{status?.count}}</p>
-      <ng-template class="card-text">{{product.avail}}</ng-template>
-      <p *ngIf="status?.name==null"  class="card-text">{{product.avail}}</p>
+<div class="cls1">
+  <div class="container" *ngFor="let product of products">
+    <div class="card" >
+      <img src="{{product.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p *ngIf="status?.name==product.name"  class="card-text">{{status?.count}}</p>
+        <ng-template class="card-text">{{product.avail}}</ng-template>
+        <p *ngIf="status?.name==null"  class="card-text">{{product.avail}}</p>
+  
+        <p *ngIf="status?.name==product.name" >{{status?.result }}</p>
+        <a class="btn btn-primary" * (click)="addToMyReservations(product.name)">Book</a>
+      </div>
+    </div>  
+  </div>
+</div>  
 
-      <p *ngIf="status?.name==product.name" >{{status?.result }}</p>
-      <a class="btn btn-primary" * (click)="addToMyReservations(product.name)">Book</a>
-    </div>
-  </div>  
-</div>
   
