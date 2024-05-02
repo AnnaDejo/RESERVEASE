@@ -1,1 +1,25 @@
-<p>spaces works!</p>
+<div class="pqr">
+    <h1>OFFICE SPACES</h1>
+    <a routerLink="/reservations"><button class="stylish-button">&larr; Back</button></a>
+</div>
+  <br>
+<div class="container" >
+  <div class="row g-3">
+    <div class="col col-12 col-xl-3 col-l-3 col-md-4" *ngFor="let product of products">
+      <div class="card" style="width: 18rem;">
+        <img src="{{product.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p *ngIf="status?.name==null"  class="card-text">{{product.avail}}</p>
+          <p *ngIf="status?.name==product.name"  class="card-text">{{status?.count}}</p>
+          <ng-template class="card-text">{{product.avail}}</ng-template>
+          <p *ngIf="status?.name==product.name" >{{status?.result }}</p>
+          <!-- <p *ngIf="product.avail === 0" class="unavailable-message">Unavailable</p>   -->
+          <button class="btn btn-primary" (click)="addToMyReservations(product.name)" [disabled]="product.avail === 0" >Book</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+  
+

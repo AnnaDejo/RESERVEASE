@@ -18,6 +18,7 @@
     transition: 0.3s;
     border-radius: 10px;
     border: 3px solid #ccc; /* Add border */
+    height: 450px;
 
 }
 
@@ -34,6 +35,9 @@
 
 .card-body {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height:100px ;
 }
 
 .btn-primary {
@@ -53,6 +57,7 @@
 .card-title {
     font-size: 20px; /* Increase font size for card title */
     margin-bottom: 15px; /* Add margin below card title */
+    flex-grow: 1;
 }
 
 .card-text {
@@ -123,5 +128,10 @@
     font-size: 60px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     color:#010f1e
+}
+.unavailable-message {
+    color: red;
+    font-weight: bold;
+    margin-top: auto;
 }
 

@@ -21,6 +21,7 @@ client = MongoClient(mongo_url)
 db = client["ReservEase"]
 users_collection = db["users"]
 resources_collection=db["resources"]
+spaces_collection=db["spaces"]
 
 
 
@@ -64,16 +65,17 @@ def signup():
     if existing_user:
         return jsonify({'alert': 'User already exists'})
 
+    myreservations= [] 
     # Insert user data into MongoDB
     user = {
         'lname':lname,'fname':fname,'username': username,'eid':eid,'designation':designation,'state':state,
-        'region':region,'phone':phone,'mail': mail,'password': password
+        'region':region,'phone':phone,'mail': mail,'password': password,'myreservations':[]
     }
     users_collection.insert_one(user)
     #return {"success":"true"}
     return jsonify({'message': 'User signed up successfully'})
 
-@app.route('/product/<id>' , methods=['POST'])
+@app.route('/product/<id>' , methods=['POST'])     #to view a single resource
 def get_product(id):
     resource = [{k:v for k,v in i.items() if k!='_id'} for i in resources_collection.find({'name':id})]
     print(jsonify(resource))
@@ -94,12 +96,32 @@ def get_products():
 @app.route('/myreservation/<name>/<username>' , methods=['GET'])
 def update_reservations(name,username):
     count=resources_collection.find_one({'name':name})['avail']
+    if count==0:
+        resources_collection.update_one({'name':name},{'$set':{'avail':count}})
+        return jsonify({"result":"Unavailable","count":count,'name':name,"avail":count})
     resources_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     myreservations=users_collection.find_one({'username':username})['myreservations']
     myreservations.append(name)
     users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
     print(myreservations)
-    return jsonify({"result":"Booking Success","count":count-1,'name':name})
+    return jsonify({"result":"Booking Success","count":count-1,'name':name,"avail":count-1})
+
+@app.route('/cart/<username>', methods=['GET'])
+def get_user_bookings(username):
+    user = users_collection.find_one({'username': username})
+    if user:
+        cart = user.get('myreservations', [])
+        cart_items=[]
+        for booking_name in cart:
+            # Fetch information for each booking from resourcecollection
+            cart_item = resources_collection.find_one({'name': booking_name})
+            if cart_item:
+                cart_items.append(cart_item)
+        return jsonify({'cart':cart_items})
+    #return jsonify({'cart': cart})
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
 
 
 if __name__ == '_main_':

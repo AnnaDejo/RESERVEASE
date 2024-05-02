@@ -5,6 +5,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { ReservationsComponent } from './pages/reservations/reservations.component';
 import { ResourcesComponent } from './pages/resources/resources.component';
+import { SpacesComponent } from './pages/spaces/spaces.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path:'signup',component:SignupComponent},
     {path:'myprofile',component:MyprofileComponent},
     {path:'reservations',component:ReservationsComponent},
-    {path:'resources',component:ResourcesComponent}
+    {path:'resources',component:ResourcesComponent},
+    {path:'spaces',component:SpacesComponent}
 
 ];

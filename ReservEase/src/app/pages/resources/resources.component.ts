@@ -26,12 +26,15 @@ export class ResourcesComponent implements OnInit {
     console.log(username)
     this.http.get<any[]>(this.baseUrl+`/myreservation/${name}/${username}`).subscribe(res => {this.status=res;console.log(res)});
     
+    
   }
 
 
   ngOnInit(): void {
    this.getProducts("/product").subscribe(response => {this.products=response})
    console.log(this.products)
+   
+   
   }
 
 }
