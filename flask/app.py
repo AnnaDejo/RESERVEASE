@@ -117,8 +117,8 @@ def get_user_bookings(username):
             cart_item = resources_collection.find_one({'name': booking_name})
             if cart_item:
                 cart_items.append(cart_item)
-        return jsonify({'cart':cart_items})
-    #return jsonify({'cart': cart})
+        #return jsonify({'cart':cart_items})
+        return jsonify({'cart': cart})
     else:
         return jsonify({'message': 'User not found'}), 404
 

@@ -1,4 +1,3 @@
-/* Custom Navigation Styles */
 .navbar {
   border-radius: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,24 +12,30 @@
   font-size: 18px;
   padding: 10px 15px;
   color: #333;
+  text-transform: uppercase; /* Uppercase text */
 }
 
-.navbar-nav .nav-link:hover {
-  color: #1abc9c;
-  background-color: #f7f7f7; /* Add background color on hover */
-}
 
 .navbar-toggler {
   border: none;
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .navbar-toggler-icon {
-  background-color: #333;
+  width: 1.5em;
+  height: 1.5em;
+  transition: color 0.3s;
 }
 
-.navbar-toggler-icon:focus {
-  outline: none;
+.navbar-toggler:hover {
+  transform: scale(1.1); /* Increase size on hover */
 }
+
 
 /* Responsive Navigation */
 @media (max-width: 991px) {
@@ -45,23 +50,6 @@
   }
 }
 
-/* Additional Styles */
-.navbar {
-  background-color: #fff; /* Change background color */
-}
-
-.navbar-nav .nav-link {
-  transition: color 0.3s ease; /* Smooth color transition */
-}
-
-.navbar-nav .nav-link:hover {
-  color: #9784d5; /* Change hover color */
-}
-
-.navbar-collapse {
-  transition: background-color 0.3s ease; /* Smooth background color transition */
-}
-
 /* Animated underline effect on hover */
 .navbar-nav .nav-link {
   position: relative;
@@ -74,10 +62,64 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #1abc9c; /* Underline color */
+  background-color: #1abc9c;
   transition: width 0.3s ease;
+}
+
+#navbarDropdown::after
+{
+  background-color: white;
 }
 
 .navbar-nav .nav-link:hover::after {
   width: 100%;
 }
+
+
+/* Dropdown menu */
+.dropdown-menu {
+  border-radius: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+  font-size: 16px;
+  padding: 10px 15px;
+  color: #333; /* Set text color */
+}
+
+/* Hover and focus styles */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #f7f7f7; /* Background color on hover/focus */
+  color: #1abc9c; /* Text color on hover/focus */
+}
+
+
+/* Dropdown toggle styles */
+.dropdown-toggle::after {
+  width: 0;
+  height: 0;
+  margin-left: .5em;
+  vertical-align: middle;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+}
+
+
+/* Sticky navbar */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  font-size: 16px; /* Adjust font size */
+  padding: 8px 20px; /* Adjust padding */
+}
+

@@ -1,18 +1,18 @@
-/* Global styles */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Changed font stack */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: #f8f9fa;
   color: #333;
-  line-height: 1.6; /* Set the line height for better readability */
-  scroll-behavior: smooth; /* Smooth scrolling behavior */
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Center main content */
 main {
-  max-width: 100%; /* Increased max-width */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -21,30 +21,29 @@ main {
   background-color: #636dca;
   background-size: cover;
   background-position: center;
-  padding: 50px 0;
+  padding: 50px 0; /* Adjusted padding to decrease height */
   text-align: center;
   color: white;
-  box-shadow: 0 10px 20px rgba(28, 25, 25, 0.3); /* Added box shadow */
-  height:300px;
+  box-shadow: 0 10px 20px rgba(28, 25, 25, 0.3);
+  position: relative; /* Added position relative */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 }
 
+
+
+
 .hero h1 {
-  font-size: 48px;
+  font-size: 3em;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #fff; /* Set text color to white */
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 1.2em;
   margin-bottom: 30px;
-}
-
-.divider {
-  border: none;
-  height: 5px;
-  background-color: white;
-  margin: 20px auto;
-  width: 100%; /* Made divider full-width */
+  color: #f0f0f0; /* Set text color to light gray */
 }
 
 .btn {
@@ -66,67 +65,60 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 70px;
+  padding: 50px;
 }
 
+/* Container styles */
 .container {
-  flex-basis: calc(33.33% - 20px);
+  flex-basis: calc(33% - 20px); /* Increased width to 40% */
   margin-bottom: 20px;
-  border-radius: 20px; /* Rounded corners */
-  box-shadow: 0 5px 15px rgba(9, 9, 119, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s; /* Added transform transition */
-  background-color: #dedde3; 
-  padding:10px;
-  width:100px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+  background-color: #fff;
+  padding: 30px;
+  border: 2px solid #ddd;
 }
 
 .container:hover {
-  transform: translateY(-5px); /* Added hover effect */
-  box-shadow: 0 10px 20px rgba(7, 7, 7, 0.2); /* Enhanced box shadow on hover */
-  background-color: #a4a6bb;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+  background-color: #f0f0f0; /* Lighter background color on hover */
+  border-color: #ccc; /* Lighter border color on hover */
 }
 
 .container h2 {
-  font-size: 30px;
-  color: #080808; /* Text color */
+  font-size: 28px; /* Increased heading font size */
+  color: #333;
 }
 
 .container p {
-  font-size: 20px;
-  line-height: 1.6;
-  color: #2d2c2c; /* Text color */
-  margin-bottom: 20px; /* Adjusted margin */
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px; /* Increased paragraph font size */
+  line-height: 1.8; /* Increased line height for better readability */
+  color: #666;
+  margin-bottom: 20px; /* Increased margin bottom for spacing */
 }
 
 .container p:last-child {
-  margin-bottom: 0; /* Remove margin from last paragraph */
+  margin-bottom: 0;
 }
 
 .container .read-more {
-  color: #1abc9c; /* Button color */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1abc9c;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .container .read-more:hover {
-  color: #16a085; /* Button hover color */
+  background-color: #16a085;
 }
 
-.xyz,.pqr,.rst
-{
-  display: flex;
-}
-
-.container1
-{
-  flex-basis: calc(33.33% - 20px);
-  margin-bottom: 20px;
-  box-shadow: 0 5px 15px rgba(9, 9, 119, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s; /* Added transform transition */
-  background-color: #dedde3; 
-  padding:10px;
-  margin: auto;
-  height:200px;
-  width:200px;
+.container img {
+  max-width: 100%; /* Ensure images don't overflow container */
+  border-radius: 10px; /* Add border radius to images */
+  margin-bottom: 20px; /* Increased margin bottom for spacing */
 }
