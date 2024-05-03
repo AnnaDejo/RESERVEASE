@@ -106,21 +106,6 @@ def update_reservations(name,username):
     print(myreservations)
     return jsonify({"result":"Booking Success","count":count-1,'name':name,"avail":count-1})
 
-@app.route('/cart/<username>', methods=['GET'])
-def get_user_bookings(username):
-    user = users_collection.find_one({'username': username})
-    if user:
-        cart = user.get('myreservations', [])
-        cart_items=[]
-        for booking_name in cart:
-            # Fetch information for each booking from resourcecollection
-            cart_item = resources_collection.find_one({'name': booking_name})
-            if cart_item:
-                cart_items.append(cart_item)
-        #return jsonify({'cart':cart_items})
-        return jsonify({'cart': cart})
-    else:
-        return jsonify({'message': 'User not found'}), 404
 
 
 
