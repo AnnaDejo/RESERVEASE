@@ -1,137 +1,368 @@
-.card-img-top {
-    max-width: 100%;
-    height: 200px;
-}
-
-.row {
-    display: flex;
-}
-
-.card-text {
-    height: 140px;
-}
-
-.card {
-    padding:10px;
-    margin: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    border-radius: 10px;
-    border: 3px solid #ccc; /* Add border */
-    height: 450px;
-
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-    max-width: 100%;
-    height: 250px;
-    border-radius: 8px; /* Adjust border radius */
-    margin-bottom: 10px; /* Add margin to the bottom */
-}
-
-.card-body {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height:100px ;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
-
-.card-img-top {
-    padding:10px;
-    max-width: 100%;
-    height: 250px;
-    border-radius: 8px; /* Adjust border radius */
-    margin-bottom: 10px; /* Add margin to the bottom */
-    border: 1px solid #ccc;
-}
-
-.card-title {
-    font-size: 20px; /* Increase font size for card title */
-    margin-bottom: 15px; /* Add margin below card title */
-    flex-grow: 1;
-}
-
-.card-text {
-    font-size: 16px; /* Adjust font size for card text */
-}
-
-.card-footer {
-    background-color: #f8f9fa; /* Set background color for card footer */
-    padding: 10px; /* Add padding to card footer */
-    border-bottom-left-radius: 10px; /* Adjust border radius for card footer */
-    border-bottom-right-radius: 10px; /* Adjust border radius for card footer */
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-.btn-primary:focus {
-    box-shadow: none; /* Remove box shadow on focus */
-}
-
-.card-link {
-    color: #007bff; /* Set color for card links */
-    text-decoration: none; /* Remove underline from card links */
-}
-
-.card-link:hover {
-    text-decoration: underline; /* Underline card links on hover */
-}
-
-
-
-/* styles.css */
-
-.stylish-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
-    float: right; /* Move the button to the right */
-    transition: background-color 0.3s ease; /* Add transition effect */
-}
-
-.stylish-button:hover {
-    background-color: #45a049; /* Darken the background color on hover */
-}
-
-.pqr {
-    display: flex;
-    justify-content: space-between; /* Move the button to the right */
-    align-items: center; 
+/* Custom Navigation Styles */
+.navbar {
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    /* White background color */
+    height: 60px;
+    /* Adjust the height of the navbar */
   }
-
-.pqr h1 {
-    margin: 0;
-    float:center;
-    font-size: 60px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    color:#010f1e
-}
-.unavailable-message {
-    color: red;
+  
+  .navbar-brand {
+    font-size: 24px;
     font-weight: bold;
-    margin-top: auto;
-}
-
+    color: #333;
+    /* Dark grey text color */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    padding: 5px 15px;
+    /* Adjust the vertical padding */
+    line-height: 30px;
+    /* Adjust the line height */
+    color: #333;
+    text-transform: uppercase;
+    /* Uppercase text */
+    transition: color 0.3s;
+    /* Smooth transition for color change */
+  }
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: #1abc9c;
+    /* Green text color on hover/focus */
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .navbar-toggler-icon {
+    width: 1.5em;
+    height: 1.5em;
+    transition: color 0.3s;
+  }
+  
+  .navbar-toggler:hover {
+    transform: scale(1.1);
+    /* Increase size on hover */
+  }
+  
+  /* Responsive Navigation */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      margin-top: 10px;
+    }
+  
+    .navbar-collapse {
+      background-color: #a4a6bb;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+  }
+  
+  /* Animated underline effect on hover */
+  .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1abc9c;
+    transition: width 0.3s ease;
+  }
+  
+  #navbarDropdown::after {
+    background-color: white;
+  }
+  
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dropdown menu */
+  .dropdown-menu {
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    /* White background color */
+  }
+  
+  /* Dropdown item styles */
+  .dropdown-item {
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #333;
+    /* Set text color */
+  }
+  
+  /* Hover and focus styles */
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: #f7f7f7;
+    /* Background color on hover/focus */
+    color: #1abc9c;
+    /* Text color on hover/focus */
+  }
+  
+  /* Dropdown toggle styles */
+  .dropdown-toggle::after {
+    width: 0;
+    height: 0;
+    margin-left: .5em;
+    vertical-align: middle;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+  }
+  
+  /* Sticky navbar */
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Adjust font size and padding for dropdown items */
+  .dropdown-item {
+    font-size: 16px;
+    /* Adjust font size */
+    padding: 8px 20px;
+    /* Adjust padding */
+  }
+  
+  
+  
+  
+  .abc {
+    padding: 20px;
+    border: 2px solid whitesmoke;
+    width: 93%;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 600px;
+    background-color: whitesmoke;
+    font-family: 'TOWN 70 Accent Bold 2', sans-serif;
+    color:white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* Set font family */
+  }
+  
+  .cabina {
+    border-radius: 10px;
+    border: 1px solid white;
+    margin-right: 10px;
+    padding: 15px;
+    width: 290px;
+    height: 340px;
+    background-color: #DC8DA5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .cabinb {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 215px;
+    width: 570px;
+    margin-right: 15px;
+    background-color: #DC8DA5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Vibrant cyan */
+  }
+  
+  .meet1 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: 130px;
+    background-color: #4D6D9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .meet2 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 200px;
+    margin-right: 10px;
+    background-color: #4D6D9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .meet3 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 100px;
+    width: 400px;
+    margin-right: 10px;
+    background-color: #4D6D9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .meet4 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 135px;
+    width: 410px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    background-color: #4D6D9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .con {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 230px;
+    margin-bottom: 10px;
+    width: 400px;
+    background-color: #6699A6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .vdocon {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 410px;
+    margin-bottom: 10px;
+    background-color: #6699A6;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .hr {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 215px;
+    width: 230px;
+    margin-right: 15px;
+    background-color: #5F6366;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .storage {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 215px;
+    width: 135px;
+    margin-right: 15px;
+    background-color: #5F6366;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  
+  
+  .vest {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 215px;
+    width: 410px;
+    margin-right: 15px;
+    background-color: #5F6366;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .div1 {
+    display: flex;
+  }
+  
+  .div2 {
+    display: flex;
+  }
+  
+  /*Hover Styles*/
+  
+  .cabina:hover {
+    transform: scale(1.05);
+    background-color: #EDB5BF;
+  }
+  
+  .cabinb:hover {
+    transform: scale(1.05);
+    background-color: #EDB5BF;
+  }
+  
+  .meet1:hover {
+    transform: scale(1.05);
+    background-color: #9DC0DB;
+  }
+  
+  .meet2:hover {
+    transform: scale(1.05);
+    background-color: #9DC0DB;
+  }
+  
+  .meet3:hover {
+    transform: scale(1.05);
+    background-color: #9DC0DB;
+  }
+  
+  .meet4:hover {
+    transform: scale(1.05);
+    background-color: #9DC0DB;
+  }
+  
+  .vdocon:hover {
+    transform: scale(1.05);
+    background-color: #99CED3;
+  }
+  
+  .con:hover {
+    transform: scale(1.05);
+    background-color: #99CED3;
+  }
+  
+  a
+  {
+    text-decoration: none;
+    color:white;
+  }
