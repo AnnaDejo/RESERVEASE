@@ -1,7 +1,28 @@
-<div class="pqr">
-    <h1>RESOURCES</h1>
-    <a routerLink="/reservations"><button class="stylish-button">&larr; Back</button></a>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <h1 class="re" >Resources</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/myprofile">Profile</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           MENU
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/spaces">Reserve Company Spaces</a></li>
+            <li><a class="dropdown-item" routerLink="/myreservations">My Reservations</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <br>
 <div class="container" >
   <div class="row g-3">
@@ -13,7 +34,7 @@
           <p *ngIf="status?.name==null"  class="card-text">{{product.avail}}</p>
           <p *ngIf="status?.name==product.name"  class="card-text">{{status?.count}}</p>
           <ng-template class="card-text">{{product.avail}}</ng-template>
-          <p *ngIf="status?.name==product.name" >{{status?.result }}</p>
+          <!-- <p *ngIf="status?.name==product.name" >{{status?.result }}</p> -->
           <!-- <p *ngIf="product.avail === 0" class="unavailable-message">Unavailable</p>   -->
           <button class="btn btn-primary" (click)="addToMyReservations(product.name)" [disabled]="product.avail === 0" >Book</button>
         </div>

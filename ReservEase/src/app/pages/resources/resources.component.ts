@@ -3,6 +3,8 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-resources',
@@ -16,7 +18,7 @@ export class ResourcesComponent implements OnInit {
   status:any;
   private baseUrl = 'http://localhost:5000';
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,private snackBar: MatSnackBar) { }
 
   getProducts(endPoint:String): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl+endPoint);
@@ -24,7 +26,19 @@ export class ResourcesComponent implements OnInit {
   addToMyReservations(name:string){
     const username=JSON.parse(localStorage.getItem("user")||"")["username"];
     console.log(username)
-    this.http.get<any[]>(this.baseUrl+`/myreservation/${name}/${username}`).subscribe(res => {this.status=res;console.log(res)});
+    this.http.get<any>(this.baseUrl+`/resources/${name}/${username}`).subscribe(res => 
+      {
+        this.status=res;
+        console.log(res);
+        const message = `${name} ${res.result}`;
+        this.snackBar.open(message, 'OK',
+        {
+          duration: 5000, // Duration in milliseconds
+          horizontalPosition: 'center', // Position of the notification
+          verticalPosition: 'top'
+        })
+      
+      });
     
     
   }
