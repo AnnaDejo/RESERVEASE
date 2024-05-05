@@ -138,10 +138,10 @@ def get_user_bookings(username):
 
 @app.route('/cancel_reservation/<reservation_name>', methods=['POST'])
 def cancel_reservation(reservation_name):
-    db = mongo.db
+    
 
     # Update availability in resources collection
-    resource = db.resources.find_one({"name": reservation_name})
+    resource = resources_collection.find_one({"name": reservation_name})
     if resource:
         db.resources.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
 
