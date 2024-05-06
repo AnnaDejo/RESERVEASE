@@ -8,6 +8,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { ResourcesComponent } from "./pages/resources/resources.component";
+import { AComponent } from './Cabin/a/a.component';
+import { BComponent } from './Cabin/b/b.component';
 
 
 @Component({
@@ -15,7 +17,8 @@ import { ResourcesComponent } from "./pages/resources/resources.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, SigninComponent, SignupComponent, NavComponent, HttpClientModule, MyprofileComponent, ResourcesComponent]
+    imports: [RouterOutlet, HomeComponent, SigninComponent, SignupComponent, NavComponent, 
+      HttpClientModule, MyprofileComponent, ResourcesComponent,AComponent,BComponent]
 })
 export class AppComponent {
   title = 'ReservEase';

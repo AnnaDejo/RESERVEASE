@@ -7,6 +7,8 @@ import { ReservationsComponent } from './pages/reservations/reservations.compone
 import { ResourcesComponent } from './pages/resources/resources.component';
 import { SpacesComponent } from './pages/spaces/spaces.component';
 import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
+import { AComponent } from './Cabin/a/a.component';
+import { BComponent } from './Cabin/b/b.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -16,8 +18,9 @@ export const routes: Routes = [
     {path:'reservations',component:ReservationsComponent},
     {path:'resources',component:ResourcesComponent},
     {path:'spaces',component:SpacesComponent},
-    {path:'myreservations',component:MyreservationsComponent}
-    //{path:'cabina',component:SpacesComponent}
+    {path:'myreservations',component:MyreservationsComponent},
+    {path:'cabina',component:AComponent},
+    {path:'cabinb',component:BComponent}
 
 
 ];
