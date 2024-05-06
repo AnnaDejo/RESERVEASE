@@ -31,13 +31,20 @@ export class SigninComponent {
       .subscribe((response: any) => {
         // Handle response from Flask
         
-        if (response.success) {
+        if (response.successfull) {
+          // Redirect user to dashboard or another page
+          localStorage.setItem('admin', JSON.stringify(response.admin));
+          console.log("Login Success")
+          this.router.navigate(['/adminprofile']);
+        }
+
+        else if (response.success) {
           // Redirect user to dashboard or another page
           localStorage.setItem('user', JSON.stringify(response.user));
           console.log("Login Success")
           this.router.navigate(['/myprofile']);
-         
-        } else {
+        } else 
+        {
           // Display error message to the user
           console.log("Invalid user")
           this.errorMessage = "Invalid username or password";
