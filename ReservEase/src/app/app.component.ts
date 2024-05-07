@@ -12,6 +12,7 @@ import { MyresourcesComponent } from './pages/myresources/myresources.component'
 import { AComponent } from './Cabin/a/a.component';
 import { BComponent } from './Cabin/b/b.component';
 import { AdminprofileComponent } from './Admin/adminprofile/adminprofile.component';
+import { MyspacesComponent } from './pages/myspaces/myspaces.component';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { AdminprofileComponent } from './Admin/adminprofile/adminprofile.compone
     styleUrl: './app.component.css',
     imports: [RouterOutlet, HomeComponent, SigninComponent, SignupComponent, NavComponent, 
             HttpClientModule, MyprofileComponent, ResourcesComponent,MyresourcesComponent,AComponent,BComponent,
-            AdminprofileComponent]
+            AdminprofileComponent,MyspacesComponent]
 })
 export class AppComponent {
   title = 'ReservEase';

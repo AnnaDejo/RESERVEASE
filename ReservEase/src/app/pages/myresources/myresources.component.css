@@ -143,72 +143,58 @@
     padding: 8px 20px;
     /* Adjust padding */
   }
+
+
+
   .my-reservations {
-    margin-top: 20px;
-  }
-  
-  .section-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .no-reservations {
-    font-style: italic;
-    color: #888;
-    margin-bottom: 10px;
-  }
-  
-  .reservation {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    border: 2px solid #656b70;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 200px;
-    margin-right: 200px;
-    background-color: white;
-    height:210px;
-    justify-content: space-between;
-  }
-  
-  .reservation-info {
-    margin-left: 10px; /* Add margin to separate image and name */
-    display: flex; /* Use flexbox for layout */
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .reservation-name {
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-left: 100px;
-    font-size: 30px;
-  }
-  
-  .reservation-image {
-    width:140px; /* Adjust image width as needed */
-    height: auto;
-    border-radius: 5px;
-    margin-right: 10px; /* Add margin to separate image and name */
-  }
-  .body{
-    background-color: #aab5f3;
-    height:100%;
-  }
-  .cancel-button {
-    padding: 8px 16px; /* Adjust padding as needed */
-    background-color: #ff6961; /* Button background color */
-    color: white; /* Text color */
-    border: none;
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-    
-    
-  }
-  
-  .cancel-button:hover {
-    background-color: #ff473d; /* Darker background color on hover */
-  }
-  
+  margin-top: 20px;
+  width:auto;
+}
+
+.reservation {
+  align-items: center; /* Center items vertically */
+  border: 2px solid #656b70;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px; /* Adjust left margin */
+  margin-right: 50px; /* Adjust right margin */
+  background-color: white;
+  height: 210px;
+  justify-content: space-between;
+}
+
+.reservation-info {
+  margin-left: 10px; /* Add margin to separate image and name */
+  display: flex; /* Use flexbox for layout */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reservation-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 20px; /* Adjust left margin */
+  font-size: 30px;
+}
+
+.reservation-image {
+  image-rendering:auto;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 10px; /* Add margin to separate image and name */
+}
+
+.cancel-button {
+  padding: 8px 16px; /* Adjust padding as needed */
+  background-color: #ff6961; /* Button background color */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.cancel-button:hover {
+  background-color: #ff473d; /* Darker background color on hover */
+}

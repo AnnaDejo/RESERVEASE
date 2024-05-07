@@ -5,16 +5,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-myresources',
+  selector: 'app-myspaces',
   standalone: true,
-  imports: [RouterLink,CommonModule],
-  templateUrl: './myresources.component.html',
-  styleUrl: './myresources.component.css'
+  imports: [CommonModule,RouterLink],
+  templateUrl: './myspaces.component.html',
+  styleUrl: './myspaces.component.css'
 })
-export class MyresourcesComponent {
+export class MyspacesComponent {
   cartItems: any[] = []; // Change type as per your data structure
 
-  constructor(private http: HttpClient ,private snackBar: MatSnackBar ) { }
+  constructor(private http: HttpClient,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -23,7 +23,7 @@ export class MyresourcesComponent {
   loadCartItems(): void {
     const username=JSON.parse(localStorage.getItem("user")||"")["username"];  
 
-    const url = `http://localhost:5000/cartr/${username}`;
+    const url = `http://localhost:5000/carts/${username}`;
 
     this.http.get<{cart:any[]}>(url).subscribe(
       response => 
@@ -63,4 +63,6 @@ export class MyresourcesComponent {
       }
     );
   }
+
 }
+

@@ -170,7 +170,7 @@ def update_cabinb(name,username):
     return jsonify({"result":"Booked","count":count-1,'name':name,"avail":count-1})
 
 
-@app.route('/cart/<username>', methods=['GET'])
+@app.route('/cartr/<username>', methods=['GET'])
 def get_user_bookings(username):
     user = users_collection.find_one({'username': username})
     if user:
@@ -186,23 +186,76 @@ def get_user_bookings(username):
         return jsonify({'cart':cart_items})
     else:
         return jsonify({'message': 'User not found'}), 404
+    
+@app.route('/carts/<username>', methods=['GET'])
+def get_user_booking(username):
+    user = users_collection.find_one({'username': username})
+    if user:
+        cart = user.get('myreservations', [])
+        #return jsonify({'cart': cart})
+        cart_items=[]
+        for booking_name in cart:
+            # Fetch information for each booking from resourcecollection
+            cart_item1 = spaces_collection.find_one({'name': booking_name})
+            cart_item2 = a_collection.find_one({'name': booking_name})
+            cart_item3 =b_collection.find_one({'name': booking_name})
 
-@app.route('/cancel_reservation/<reservation_name>', methods=['POST'])
+            if cart_item1:
+                cart_item1['_id'] = str(cart_item1.get('_id'))
+                cart_items.append(cart_item1)
+            if cart_item2:
+                cart_item2['_id'] = str(cart_item2.get('_id'))
+                cart_items.append(cart_item2)
+            if cart_item3:
+                cart_item3['_id'] = str(cart_item3.get('_id'))
+                cart_items.append(cart_item3)
+            
+        return jsonify({'cart':cart_items})
+    else:
+        return jsonify({'message': 'User not found'}), 404
+
+@app.route('/cancel/<reservation_name>', methods=['POST'])
 def cancel_reservation(reservation_name):
     
 
     # Update availability in resources collection
     resource = resources_collection.find_one({"name": reservation_name})
-    if resource:
-        db.resources.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+    space=spaces_collection.find_one({"name": reservation_name})
+    a = a_collection.find_one({"name": reservation_name})
+    b = b_collection.find_one({"name": reservation_name})
 
+    if resource:
+        resources_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
         # Delete reservation from user's myreservations array
         username = request.json.get('username')  # Assuming username is passed in the request body
-        db.users.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
+        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
+        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
+    if space:
+        spaces_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+        # Delete reservation from user's myreservations array
+        username = request.json.get('username')  # Assuming username is passed in the request body
+        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
+        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
+    if a:
+        a_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+        # Delete reservation from user's myreservations array
+        username = request.json.get('username')  # Assuming username is passed in the request body
+        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
+        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
+    if b:
+        b_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+        # Delete reservation from user's myreservations array
+        username = request.json.get('username')  # Assuming username is passed in the request body
+        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
+        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})        
+    return jsonify({"error": "Resource not found"}), 404
 
-        return jsonify({"message": "Reservation cancelled successfully", "reservation_name": reservation_name})
-    else:
-        return jsonify({"error": "Resource not found"}), 404
+
+
+
+
+
+
 
 
 if __name__ == '_main_':

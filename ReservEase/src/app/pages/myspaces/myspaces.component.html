@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <h1 class="re" >My Resources</h1>
+      <h1 class="re" >My Spaces</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,7 +11,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             MENU
+             Make New Reservation
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" routerLink="/resources">Reserve Company Resources</a></li>
@@ -28,7 +28,7 @@
     <!-- <div *ngIf="cartItems.length === 0" class="no-reservations">No reservations</div> -->
     <div class="reservation" *ngFor="let item of cartItems">
       <div class="reservation-info ">
-        <img [src]="item.image" alt="{{ item.name }}" class="reservation-image">
+        <!-- <img [src]="item.image" alt="{{ item.name }}" class="reservation-image"> -->
         <div class="reservation-name">{{ item.name }}</div>
         <button class="cancel-button" (click)="cancelReservation(item)">Cancel</button>
       </div>
@@ -40,3 +40,4 @@
 
 
   
+

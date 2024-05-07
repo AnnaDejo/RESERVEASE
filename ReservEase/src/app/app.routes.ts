@@ -11,6 +11,7 @@ import { AComponent } from './Cabin/a/a.component';
 import { BComponent } from './Cabin/b/b.component';
 import { MyresourcesComponent } from './pages/myresources/myresources.component';
 import { AdminprofileComponent } from './Admin/adminprofile/adminprofile.component';
+import { MyspacesComponent } from './pages/myspaces/myspaces.component';
 
 
 export const routes: Routes = [
@@ -25,5 +26,6 @@ export const routes: Routes = [
     {path:'cabina',component:AComponent},
     {path:'cabinb',component:BComponent},
     {path:'myresource',component:MyresourcesComponent},
-    {path:'adminprofile',component:AdminprofileComponent}
+    {path:'adminprofile',component:AdminprofileComponent},
+    {path:'myspace',component:MyspacesComponent}
 ];

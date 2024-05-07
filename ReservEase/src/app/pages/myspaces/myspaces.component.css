@@ -1,0 +1,200 @@
+.navbar {
+  border-radius: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  /* White background color */
+  height: 60px;
+  /* Adjust the height of the navbar */
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  /* Dark grey text color */
+}
+
+.navbar-nav .nav-link {
+  font-size: 18px;
+  padding: 5px 15px;
+  /* Adjust the vertical padding */
+  line-height: 30px;
+  /* Adjust the line height */
+  color: #333;
+  text-transform: uppercase;
+  /* Uppercase text */
+  transition: color 0.3s;
+  /* Smooth transition for color change */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #1abc9c;
+  /* Green text color on hover/focus */
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.navbar-toggler-icon {
+  width: 1.5em;
+  height: 1.5em;
+  transition: color 0.3s;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.1);
+  /* Increase size on hover */
+}
+
+/* Responsive Navigation */
+@media (max-width: 991px) {
+  .navbar-nav {
+    margin-top: 10px;
+  }
+
+  .navbar-collapse {
+    background-color: #a4a6bb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+}
+
+/* Animated underline effect on hover */
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1abc9c;
+  transition: width 0.3s ease;
+}
+
+#navbarDropdown::after {
+  background-color: white;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  border-radius: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  /* White background color */
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+  font-size: 16px;
+  padding: 10px 15px;
+  color: #333;
+  /* Set text color */
+}
+
+/* Hover and focus styles */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #f7f7f7;
+  /* Background color on hover/focus */
+  color: #1abc9c;
+  /* Text color on hover/focus */
+}
+
+/* Dropdown toggle styles */
+.dropdown-toggle::after {
+  width: 0;
+  height: 0;
+  margin-left: .5em;
+  vertical-align: middle;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+}
+
+/* Sticky navbar */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Adjust font size and padding for dropdown items */
+.dropdown-item {
+  font-size: 16px;
+  /* Adjust font size */
+  padding: 8px 20px;
+  /* Adjust padding */
+}
+
+
+
+.my-reservations {
+margin-top: 20px;
+width:auto;
+}
+
+.reservation {
+align-items: center; /* Center items vertically */
+border: 2px solid #656b70;
+border-radius: 5px;
+padding: 10px;
+margin-bottom: 10px;
+margin-left: 50px; /* Adjust left margin */
+margin-right: 50px; /* Adjust right margin */
+background-color: white;
+height: 210px;
+justify-content: space-between;
+}
+
+.reservation-info {
+margin-left: 10px; /* Add margin to separate image and name */
+display: flex; /* Use flexbox for layout */
+align-items: center;
+justify-content: space-between;
+}
+
+.reservation-name {
+font-weight: bold;
+margin-bottom: 5px;
+margin-left: 20px; /* Adjust left margin */
+font-size: 30px;
+}
+
+.reservation-image {
+image-rendering:auto;
+height: auto;
+border-radius: 5px;
+margin-right: 10px; /* Add margin to separate image and name */
+}
+
+.cancel-button {
+padding: 8px 16px; /* Adjust padding as needed */
+background-color: #ff6961; /* Button background color */
+color: white; /* Text color */
+border: none;
+border-radius: 4px; /* Rounded corners */
+cursor: pointer;
+transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.cancel-button:hover {
+background-color: #ff473d; /* Darker background color on hover */
+}
