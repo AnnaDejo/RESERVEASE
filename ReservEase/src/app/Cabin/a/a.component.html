@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" >Cabin A</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,11 +6,9 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          
           <li class="nav-item">
             <a class="nav-link" routerLink="/spaces">Back</a>
           </li>
-          
         </ul>
       </div>
     </div>
@@ -142,6 +140,154 @@
             <div class="bench" (click)="addToMyReservations('A78')">A78</div>
             <div class="bench" (click)="addToMyReservations('A79')">A79</div>
             <div class="bench" (click)="addToMyReservations('A80')">A80</div>
+        </div>
+    </div>
+
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" >Cabin A</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/spaces">Back</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+</nav>
+
+
+
+<div class="main">
+    <div class="div1">
+        <div class="r1c1"  >
+            <div class="bench" (click)="addToMyReservations('A1')" [style.background-color]="(cabinData[0].avail == 0) ? 'red' : 'blue'" >A1</div>
+            <div class="bench"(click)="addToMyReservations('A2')" [style.background-color]="(cabinData[1].avail == 0) ? 'red' : 'blue'" >A2</div>
+            <div class="bench"(click)="addToMyReservations('A3')" [style.background-color]="(cabinData[2].avail == 0) ? 'red' : 'blue'">A3</div>
+            <div class="bench"(click)="addToMyReservations('A4')" [style.background-color]="(cabinData[3].avail == 0) ? 'red' : 'blue'">A4</div>
+        </div>
+        <div class="r2c1">
+            <div class="bench"(click)="addToMyReservations('A5')" [style.background-color]="(cabinData[4].avail == 0) ? 'red' : 'blue'">A5</div>
+            <div class="bench"(click)="addToMyReservations('A6')" [style.background-color]="(cabinData[5].avail == 0) ? 'red' : 'blue'">A6</div>
+            <div class="bench"(click)="addToMyReservations('A7')" [style.background-color]="(cabinData[6].avail == 0) ? 'red' : 'blue'">A7</div>
+            <div class="bench"(click)="addToMyReservations('A8')" [style.background-color]="(cabinData[7].avail == 0) ? 'red' : 'blue'">A8</div>
+        </div>
+        <div class="r3c1">
+            <div class="bench" (click)="addToMyReservations('A9')" [style.background-color]="(cabinData[8].avail == 0) ? 'red' : 'blue'">A9</div>
+            <div class="bench"(click)="addToMyReservations('A10')" [style.background-color]="(cabinData[9].avail == 0) ? 'red' : 'blue'">A10</div>
+            <div class="bench"(click)="addToMyReservations('A11')" [style.background-color]="(cabinData[10].avail == 0) ? 'red' : 'blue'">A11</div>
+            <div class="bench"(click)="addToMyReservations('A12')" [style.background-color]="(cabinData[11].avail == 0) ? 'red' : 'blue'">A12</div>
+        </div>
+        <div class="r4c1">
+            <div class="bench" (click)="addToMyReservations('A13')" [style.background-color]="(cabinData[12].avail == 0) ? 'red' : 'blue'">A13</div>
+            <div class="bench" (click)="addToMyReservations('A14')" [style.background-color]="(cabinData[13].avail == 0) ? 'red' : 'blue'">A14</div>
+            <div class="bench" (click)="addToMyReservations('A15')" [style.background-color]="(cabinData[14].avail == 0) ? 'red' : 'blue'">A15</div>
+            <div class="bench" (click)="addToMyReservations('A16')" [style.background-color]="(cabinData[15].avail == 0) ? 'red' : 'blue'">A16</div>
+        </div>
+        <div class="r5c1">
+            <div class="bench" (click)="addToMyReservations('A17')" [style.background-color]="(cabinData[16].avail == 0) ? 'red' : 'blue'">A17</div>
+            <div class="bench" (click)="addToMyReservations('A18')" [style.background-color]="(cabinData[17].avail == 0) ? 'red' : 'blue'">A18</div>
+            <div class="bench" (click)="addToMyReservations('A19')" [style.background-color]="(cabinData[18].avail == 0) ? 'red' : 'blue'">A19</div>
+            <div class="bench"(click)="addToMyReservations('A20')" [style.background-color]="(cabinData[19].avail == 0) ? 'red' : 'blue'">A20</div>
+        </div>
+        <div class="r6c1">
+            <div class="bench" (click)="addToMyReservations('A21')" [style.background-color]="(cabinData[20].avail == 0) ? 'red' : 'blue'">A21</div>
+            <div class="bench" (click)="addToMyReservations('A22')" [style.background-color]="(cabinData[21].avail == 0) ? 'red' : 'blue'">A22</div>
+            <div class="bench" (click)="addToMyReservations('A23')" [style.background-color]="(cabinData[22].avail == 0) ? 'red' : 'blue'">A23</div>
+            <div class="bench" (click)="addToMyReservations('A24')" [style.background-color]="(cabinData[23].avail == 0) ? 'red' : 'blue'">A24</div>
+        </div>
+        <div class="r7c1">
+            <div class="bench" (click)="addToMyReservations('A25')" [style.background-color]="(cabinData[24].avail == 0) ? 'red' : 'blue'">A25</div>
+            <div class="bench" (click)="addToMyReservations('A26')" [style.background-color]="(cabinData[25].avail == 0) ? 'red' : 'blue'">A26</div>
+            <div class="bench" (click)="addToMyReservations('A27')" [style.background-color]="(cabinData[26].avail == 0) ? 'red' : 'blue'">A27</div>
+            <div class="bench"(click)="addToMyReservations('A28')" [style.background-color]="(cabinData[27].avail == 0) ? 'red' : 'blue'">A28</div>
+        </div>
+        <div class="r8c1">
+            <div class="bench"(click)="addToMyReservations('A29')" [style.background-color]="(cabinData[28].avail == 0) ? 'red' : 'blue'">A29</div>
+            <div class="bench"(click)="addToMyReservations('A30')" [style.background-color]="(cabinData[29].avail == 0) ? 'red' : 'blue'">A30</div>
+            <div class="bench"(click)="addToMyReservations('A31')" [style.background-color]="(cabinData[30].avail == 0) ? 'red' : 'blue'">A31</div>
+            <div class="bench"(click)="addToMyReservations('A32')" [style.background-color]="(cabinData[31].avail == 0) ? 'red' : 'blue'">A32</div>
+        </div>
+        <div class="r9c1">
+            <div class="bench" (click)="addToMyReservations('A33')" [style.background-color]="(cabinData[32].avail == 0) ? 'red' : 'blue'">A33</div>
+            <div class="bench"(click)="addToMyReservations('A34')" [style.background-color]="(cabinData[33].avail == 0) ? 'red' : 'blue'">A34</div>
+            <div class="bench"(click)="addToMyReservations('A35')" [style.background-color]="(cabinData[34].avail == 0) ? 'red' : 'blue'">A35</div>
+            <div class="bench"(click)="addToMyReservations('A36')" [style.background-color]="(cabinData[35].avail == 0) ? 'red' : 'blue'">A36</div>
+        </div>
+        <div class="r10c1">
+            <div class="bench"(click)="addToMyReservations('A37')" [style.background-color]="(cabinData[36].avail == 0) ? 'red' : 'blue'">A37</div>
+            <div class="bench"(click)="addToMyReservations('A38')" [style.background-color]="(cabinData[37].avail == 0) ? 'red' : 'blue'">A38</div>
+            <div class="bench"(click)="addToMyReservations('A39')" [style.background-color]="(cabinData[38].avail == 0) ? 'red' : 'blue'">A39</div>
+            <div class="bench"(click)="addToMyReservations('A40')" [style.background-color]="(cabinData[39].avail == 0) ? 'red' : 'blue'">A40</div>
+        </div>
+    </div>
+    
+    <div class="div1">
+        <div class="r1c2">
+            <div class="bench" (click)="addToMyReservations('A41')" [style.background-color]="(cabinData[40].avail == 0) ? 'red' : 'blue'">A41</div>
+            <div class="bench" (click)="addToMyReservations('A42')" [style.background-color]="(cabinData[41].avail == 0) ? 'red' : 'blue'">A42</div>
+            <div class="bench" (click)="addToMyReservations('A43')" [style.background-color]="(cabinData[42].avail == 0) ? 'red' : 'blue'">A43</div>
+            <div class="bench" (click)="addToMyReservations('A44')" [style.background-color]="(cabinData[43].avail == 0) ? 'red' : 'blue'">A44</div>
+        </div>
+        <div class="r2c2">
+            <div class="bench" (click)="addToMyReservations('A45')" [style.background-color]="(cabinData[44].avail == 0) ? 'red' : 'blue'">A45</div>
+            <div class="bench" (click)="addToMyReservations('A46')" [style.background-color]="(cabinData[45].avail == 0) ? 'red' : 'blue'">A46</div>
+            <div class="bench" (click)="addToMyReservations('A47')" [style.background-color]="(cabinData[46].avail == 0) ? 'red' : 'blue'">A47</div>
+            <div class="bench" (click)="addToMyReservations('A48')" [style.background-color]="(cabinData[47].avail == 0) ? 'red' : 'blue'">A48</div>
+        </div>
+        <div class="r3c2">
+            <div class="bench" (click)="addToMyReservations('A49')" [style.background-color]="(cabinData[48].avail == 0) ? 'red' : 'blue'">A49</div>
+            <div class="bench" (click)="addToMyReservations('A50')" [style.background-color]="(cabinData[49].avail == 0) ? 'red' : 'blue'">A50</div>
+            <div class="bench" (click)="addToMyReservations('A51')" [style.background-color]="(cabinData[50].avail == 0) ? 'red' : 'blue'">A51</div>
+            <div class="bench" (click)="addToMyReservations('A52')" [style.background-color]="(cabinData[51].avail == 0) ? 'red' : 'blue'">A52</div>
+        </div>
+        <div class="r4c2">
+            <div class="bench" (click)="addToMyReservations('A53')" [style.background-color]="(cabinData[52].avail == 0) ? 'red' : 'blue'">A53</div>
+            <div class="bench" (click)="addToMyReservations('A54')" [style.background-color]="(cabinData[53].avail == 0) ? 'red' : 'blue'">A54</div>
+            <div class="bench" (click)="addToMyReservations('A55')" [style.background-color]="(cabinData[54].avail == 0) ? 'red' : 'blue'">A55</div>
+            <div class="bench" (click)="addToMyReservations('A56')" [style.background-color]="(cabinData[55].avail == 0) ? 'red' : 'blue'">A56</div>
+        </div>
+        <div class="r5c2">
+            <div class="bench" (click)="addToMyReservations('A57')" [style.background-color]="(cabinData[56].avail == 0) ? 'red' : 'blue'">A57</div>
+            <div class="bench" (click)="addToMyReservations('A58')" [style.background-color]="(cabinData[57].avail == 0) ? 'red' : 'blue'">A58</div>
+            <div class="bench" (click)="addToMyReservations('A59')" [style.background-color]="(cabinData[58].avail == 0) ? 'red' : 'blue'">A59</div>
+            <div class="bench" (click)="addToMyReservations('A60')" [style.background-color]="(cabinData[59].avail == 0) ? 'red' : 'blue'">A60</div>
+        </div>
+        <div class="r6c2">
+            <div class="bench" (click)="addToMyReservations('A61')" [style.background-color]="(cabinData[60].avail == 0) ? 'red' : 'blue'">A61</div>
+            <div class="bench" (click)="addToMyReservations('A62')" [style.background-color]="(cabinData[61].avail == 0) ? 'red' : 'blue'">A62</div>
+            <div class="bench" (click)="addToMyReservations('A63')" [style.background-color]="(cabinData[62].avail == 0) ? 'red' : 'blue'">A63</div>
+            <div class="bench" (click)="addToMyReservations('A64')" [style.background-color]="(cabinData[63].avail == 0) ? 'red' : 'blue'">A64</div>
+        </div>
+        <div class="r7c2">
+            <div class="bench" (click)="addToMyReservations('A65')" [style.background-color]="(cabinData[64].avail == 0) ? 'red' : 'blue'">A65</div>
+            <div class="bench" (click)="addToMyReservations('A66')" [style.background-color]="(cabinData[65].avail == 0) ? 'red' : 'blue'">A66</div>
+            <div class="bench" (click)="addToMyReservations('A67')" [style.background-color]="(cabinData[66].avail == 0) ? 'red' : 'blue'">A67</div>
+            <div class="bench" (click)="addToMyReservations('A68')" [style.background-color]="(cabinData[67].avail == 0) ? 'red' : 'blue'">A68</div>
+        </div>
+        <div class="r8c2">
+            <div class="bench" (click)="addToMyReservations('A69')" [style.background-color]="(cabinData[68].avail == 0) ? 'red' : 'blue'">A69</div>
+            <div class="bench" (click)="addToMyReservations('A70')" [style.background-color]="(cabinData[69].avail == 0) ? 'red' : 'blue'">A70</div>
+            <div class="bench" (click)="addToMyReservations('A71')" [style.background-color]="(cabinData[70].avail == 0) ? 'red' : 'blue'">A71</div>
+            <div class="bench" (click)="addToMyReservations('A72')" [style.background-color]="(cabinData[71].avail == 0) ? 'red' : 'blue'">A72</div>
+        </div>
+        <div class="r9c2">
+            <div class="bench" (click)="addToMyReservations('A73')" [style.background-color]="(cabinData[72].avail == 0) ? 'red' : 'blue'">A73</div>
+            <div class="bench" (click)="addToMyReservations('A74')" [style.background-color]="(cabinData[73].avail == 0) ? 'red' : 'blue'">A74</div>
+            <div class="bench" (click)="addToMyReservations('A75')" [style.background-color]="(cabinData[74].avail == 0) ? 'red' : 'blue'">A75</div>
+            <div class="bench" (click)="addToMyReservations('A76')" [style.background-color]="(cabinData[75].avail == 0) ? 'red' : 'blue'">A76</div>
+        </div>
+        <div class="r10c2">
+            <div class="bench" (click)="addToMyReservations('A77')" [style.background-color]="(cabinData[76].avail == 0) ? 'red' : 'blue'">A77</div>
+            <div class="bench" (click)="addToMyReservations('A78')" [style.background-color]="(cabinData[77].avail == 0) ? 'red' : 'blue'">A78</div>
+            <div class="bench" (click)="addToMyReservations('A79')" [style.background-color]="(cabinData[78].avail == 0) ? 'red' : 'blue'">A79</div>
+            <div class="bench" (click)="addToMyReservations('A80')" [style.background-color]="(cabinData[79].avail == 0) ? 'red' : 'blue'">A80</div>
         </div>
     </div>
 

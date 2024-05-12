@@ -212,3 +212,7 @@ body
 {
     background-color: #636dca;
 }
+.error-message {
+    color: red;
+    text-align: center;
+}

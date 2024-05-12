@@ -17,11 +17,11 @@
 <div class="main">
     <div class="div1">
         <div class="r1c1">
-            <div class="bench"  (click)="addToMyReservations('B1')">b1</div>
-            <div class="bench"  (click)="addToMyReservations('B2')">b2</div>
-            <div class="bench"  (click)="addToMyReservations('B3')">b3</div>
-            <div class="bench"  (click)="addToMyReservations('B4')">b4</div>
-            <div class="bench"  (click)="addToMyReservations('B5')">b5</div>
+            <div class="bench"  (click)="addToMyReservations('B1')" [style.background-color]="(cabinData[0].avail == 0) ? 'red' : 'blue'">b1</div>
+            <div class="bench"  (click)="addToMyReservations('B2')" [style.background-color]="(cabinData[1].avail == 0) ? 'red' : 'blue'">b2</div>
+            <div class="bench"  (click)="addToMyReservations('B3')"[style.background-color]="(cabinData[2].avail == 0) ? 'red' : 'blue'">b3</div>
+            <div class="bench"  (click)="addToMyReservations('B4')"[style.background-color]="(cabinData[3].avail == 0) ? 'red' : 'blue'">b4</div>
+            <div class="bench"  (click)="addToMyReservations('B5')"[style.background-color]="(cabinData[4].avail == 0) ? 'red' : 'blue'">b5</div>
         </div>
         <div class="r2c1">
             <div class="bench"  (click)="addToMyReservations('B6')">b6</div>

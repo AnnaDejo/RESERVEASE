@@ -1,8 +1,8 @@
 import json
 from flask import Flask, jsonify, redirect, render_template, request, session
-from flask_cors import CORS # type: ignore
-from pymongo import MongoClient
-from bson import ObjectId, json_util
+from flask_cors import CORS  # type: ignore
+from pymongo import MongoClient # type: ignore
+from bson import ObjectId, json_util # type: ignore
 
 
 app = Flask(__name__)
@@ -39,7 +39,7 @@ def signin():
     admin=admin_collection.find_one({'username':username,'password':password})
     if admin:
         # If admin exists, set session variables for authentication
-        session['admin_id'] = str(admin['_id'])
+        session['id'] = str(admin['_id'])
         session['username'] = admin['username']
         admin_json = json.loads(json_util.dumps(admin))
         return jsonify({'successfull': True, 'admin': admin_json})
@@ -50,7 +50,7 @@ def signin():
         #print(json.dumps (user))
         if user:
             # If user exists, set session variables for authentication
-            session['user_id'] = str(user['_id'])
+            session['id'] = str(user['_id'])
             session['username'] = user['username']
             user_json = json.loads(json_util.dumps(user))
             return jsonify({'success': True, 'user': user_json})
@@ -59,6 +59,11 @@ def signin():
         else:
             return {"result":"false"}  # Show error message
     
+@app.route('/signout', methods=['POST'])
+def signout():
+    session.pop('username', None)
+    session.pop('id', None)    
+    return {"out":"true"}
 
 
 @app.route('/signup', methods=['POST'])
@@ -79,11 +84,11 @@ def signup():
     if existing_user:
         return jsonify({'alert': 'User already exists'})
 
-    myreservations= [] 
+    myreservations= {} 
     # Insert user data into MongoDB
     user = {
         'lname':lname,'fname':fname,'username': username,'eid':eid,'designation':designation,'state':state,
-        'region':region,'phone':phone,'mail': mail,'password': password,'myreservations':[]
+        'region':region,'phone':phone,'mail': mail,'password': password,'myreservations':{}
     }
     users_collection.insert_one(user)
     #return {"success":"true"}
@@ -104,12 +109,14 @@ def get_product(name):
 
 @app.route('/product' , methods=['GET'])
 def get_products():
+    # if not is_user_logged_in():
+    #     return jsonify({"redirect":"true"})
     resource = [{k:v for k,v in i.items() if k!='_id'} for i in resources_collection.find()]
     print(jsonify(resource))
     if resource:
         return jsonify(resource)
     else:
-        return jsonify({"error": "Product not found"}), 404   
+        return jsonify({"error": "Product not found"})   
 
 
 
@@ -121,22 +128,29 @@ def update_reservations(name,username):
         return jsonify({"result":"Unavailable","count":count,'name':name,"avail":count})
     resources_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     myreservations=users_collection.find_one({'username':username})['myreservations']
-    myreservations.append(name)
-    users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
     print(myreservations)
+    count=myreservations.get(name,0)
+    myreservations.update({name:count+1})
+    # myreservations.append(name)
+    users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
+    # print(myreservations)
     return jsonify({"result":"Booked","count":count-1,'name':name,"avail":count-1})
+    return jsonify({})
 
 
 
-@app.route('/spaces/<name>/<username>' , methods=['GET'])   #update spaces
+@app.route('/spaces/<name>/<username>' , methods=['GET'])   
 def update_spaces(name,username):
     count=spaces_collection.find_one({'name':name})['avail']
     if count==0:
         spaces_collection.update_one({'name':name},{'$set':{'avail':count}})
         return jsonify({"result":"Unavailable","count":count,'name':name,"avail":count})
-    spaces_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     myreservations=users_collection.find_one({'username':username})['myreservations']
-    myreservations.append(name)
+    space=myreservations.get("space","")
+    if space:
+        return jsonify({"result":"Cannot be booked(One room per person)"})
+    myreservations.update({"space":name})
+    spaces_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
     print(myreservations)
     return jsonify({"result":"Booked","count":count-1,'name':name,"avail":count-1})
@@ -149,12 +163,25 @@ def update_cabina(name,username):
     if count==0:
         a_collection.update_one({'name':name},{'$set':{'avail':count}})
         return jsonify({"result":"Unavailable","count":count,'name':name,"avail":count})
-    a_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     myreservations=users_collection.find_one({'username':username})['myreservations']
-    myreservations.append(name)
+    cabin=myreservations.get("cabin","")
+    if cabin:
+        return jsonify({"result":"Cannot be booked(One cabin per person)"})
+    myreservations.update({"cabin":name})
+    a_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
     print(myreservations)
     return jsonify({"result":"Booked","count":count-1,'name':name,"avail":count-1})
+
+@app.route('/cabina', methods=['GET'])
+def get_availability():
+    cabins = a_collection.find({}, {"name": 1, "avail": 1})
+    availability_data = []
+    for cabin in cabins:
+        name = cabin.get("name")
+        avail = cabin.get("avail", 0)
+        availability_data.append({"name": name, "avail": avail})
+    return jsonify(availability_data)
 
 @app.route('/cabinb/<name>/<username>' , methods=['GET'])   #update cabin a
 def update_cabinb(name,username):
@@ -162,32 +189,43 @@ def update_cabinb(name,username):
     if count==0:
         b_collection.update_one({'name':name},{'$set':{'avail':count}})
         return jsonify({"result":"Unavailable","count":count,'name':name,"avail":count})
-    b_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     myreservations=users_collection.find_one({'username':username})['myreservations']
-    myreservations.append(name)
+    cabin=myreservations.get("cabin","")
+    if cabin:
+        return jsonify({"result":"Cannot be booked(One cabin per person)"})
+    myreservations.update({"cabin":name})
+    b_collection.update_one({'name':name},{'$set':{'avail':count-1}})
     users_collection.update_one({'username':username},{'$set':{'myreservations':myreservations}})
     print(myreservations)
     return jsonify({"result":"Booked","count":count-1,'name':name,"avail":count-1})
 
+@app.route('/cabinb', methods=['GET'])
+def get_availability_b():
+    cabins = b_collection.find({}, {"name": 1, "avail": 1})
+    availability_data = []
+    for cabin in cabins:
+        name = cabin.get("name")
+        avail = cabin.get("avail", 0)
+        availability_data.append({"name": name, "avail": avail})
+    return jsonify(availability_data)
 
-@app.route('/cartr/<username>', methods=['GET'])
+
+@app.route('/cartr/<username>', methods=['GET'])  
 def get_user_bookings(username):
     user = users_collection.find_one({'username': username})
     if user:
-        cart = user.get('myreservations', [])
-        #return jsonify({'cart': cart})
+        cart = user.get('myreservations', {})
         cart_items=[]
         for booking_name in cart:
-            # Fetch information for each booking from resourcecollection
             cart_item = resources_collection.find_one({'name': booking_name})
             if cart_item:
                 cart_item['_id'] = str(cart_item.get('_id'))
                 cart_items.append(cart_item)
-        return jsonify({'cart':cart_items})
+        return jsonify({'cart':cart_items,'myreservations':cart})
     else:
-        return jsonify({'message': 'User not found'}), 404
+        return jsonify({'message': 'User not found'})
     
-@app.route('/carts/<username>', methods=['GET'])
+@app.route('/carts/<username>', methods=['GET'])        
 def get_user_booking(username):
     user = users_collection.find_one({'username': username})
     if user:
@@ -195,10 +233,10 @@ def get_user_booking(username):
         #return jsonify({'cart': cart})
         cart_items=[]
         for booking_name in cart:
-            # Fetch information for each booking from resourcecollection
-            cart_item1 = spaces_collection.find_one({'name': booking_name})
-            cart_item2 = a_collection.find_one({'name': booking_name})
-            cart_item3 =b_collection.find_one({'name': booking_name})
+            # print(booking_name)
+            cart_item1 = spaces_collection.find_one({'name': cart[booking_name]})
+            cart_item2 = a_collection.find_one({'name': cart[booking_name]})
+            cart_item3 =b_collection.find_one({'name': cart[booking_name]})
 
             if cart_item1:
                 cart_item1['_id'] = str(cart_item1.get('_id'))
@@ -212,51 +250,39 @@ def get_user_booking(username):
             
         return jsonify({'cart':cart_items})
     else:
-        return jsonify({'message': 'User not found'}), 404
+        return jsonify({'message': 'User not found'})
 
 @app.route('/cancel/<reservation_name>', methods=['POST'])
 def cancel_reservation(reservation_name):
-    
-
-    # Update availability in resources collection
-    resource = resources_collection.find_one({"name": reservation_name})
-    space=spaces_collection.find_one({"name": reservation_name})
-    a = a_collection.find_one({"name": reservation_name})
-    b = b_collection.find_one({"name": reservation_name})
-
-    if resource:
-        resources_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
-        # Delete reservation from user's myreservations array
-        username = request.json.get('username')  # Assuming username is passed in the request body
-        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
-        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
-    if space:
-        spaces_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
-        # Delete reservation from user's myreservations array
-        username = request.json.get('username')  # Assuming username is passed in the request body
-        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
-        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
-    if a:
-        a_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
-        # Delete reservation from user's myreservations array
-        username = request.json.get('username')  # Assuming username is passed in the request body
-        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
-        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
-    if b:
-        b_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
-        # Delete reservation from user's myreservations array
-        username = request.json.get('username')  # Assuming username is passed in the request body
-        users_collection.update_one({"username": username}, {"$pull": {"myreservations": reservation_name}})
-        return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})        
-    return jsonify({"error": "Resource not found"}), 404
-
-
-
-
-
-
-
-
+    username = request.json.get('username')  
+    item=users_collection.find_one({"username":username})
+    if reservation_name in item["myreservations"]:
+        resource = resources_collection.find_one({"name": reservation_name})
+        if resource:
+            resources_collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+            myreservations=users_collection.find_one({'username':username})['myreservations']
+            print(myreservations)
+            if myreservations[reservation_name]==1:
+                users_collection.update_one({"username": username},{"$unset": {f"myreservations.{reservation_name}": 1}})  
+            else:          
+                users_collection.update_one({"username": username},{"$inc": {f"myreservations.{reservation_name}": -1}})            
+            return jsonify({"message": "cancelled successfully", "reservation_name": reservation_name})
+    else:
+        myspaces = item.get("myreservations", {})
+        for key, value in myspaces.items():
+            if value == reservation_name:
+                collection = None
+                if a_collection.find_one({"name":reservation_name}) :
+                    collection = a_collection
+                elif b_collection.find_one({"name":reservation_name}):
+                    collection = b_collection
+                elif spaces_collection.find_one({"name":reservation_name}) :
+                    collection = spaces_collection
+                if collection is not None:
+                    collection.update_one({"name": reservation_name}, {"$inc": {"avail": 1}})
+                    users_collection.update_one({"username": username}, {"$unset": {f"myreservations.{key}": 1}})
+                    return jsonify({"message": "Cancelled successfully", "reservation_name": reservation_name})
+    return jsonify({"error": "Resource not found"})
 
 if __name__ == '_main_':
     app.run(debug=True)

@@ -30,6 +30,7 @@
       <div class="reservation-info ">
         <img [src]="item.image" alt="{{ item.name }}" class="reservation-image">
         <div class="reservation-name">{{ item.name }}</div>
+        <div>{{cartValue[item.name]}}</div>
         <button class="cancel-button" (click)="cancelReservation(item)">Cancel</button>
       </div>
     </div>

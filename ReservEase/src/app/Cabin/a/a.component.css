@@ -144,7 +144,7 @@
 
 .bench
 {
-  background-color: rgb(235, 67, 67);
+  background-color: rgb(88, 174, 228);
   width:80px;
   height:80px;
   margin: auto;
@@ -160,7 +160,7 @@
 
 .bench:hover {
   transform: scale(1.1); /* slightly larger size */
-  background-color: rgb(174, 62, 62);
+  background-color: rgb(26, 88, 119);
 }
 .div1
 {

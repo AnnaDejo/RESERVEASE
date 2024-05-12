@@ -20,6 +20,11 @@ export class ResourcesComponent implements OnInit {
 
   constructor(public http: HttpClient,private snackBar: MatSnackBar) { }
 
+  ngOnInit(): void {
+    this.getProducts("/product").subscribe(response => {this.products=response})
+    // console.log(this.products)
+   }
+
   getProducts(endPoint:String): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl+endPoint);
   }
@@ -39,16 +44,13 @@ export class ResourcesComponent implements OnInit {
         })
       
       });
-    
-    
+    // setTimeout(location.reload,5500);
+    // console.log(this.products)
+    if (this.products)
+     this.products.find(product => product.name === name).avail -= 1;
   }
 
 
-  ngOnInit(): void {
-   this.getProducts("/product").subscribe(response => {this.products=response})
-   console.log(this.products)
-   
-   
-  }
+  
 
 }

@@ -34,7 +34,7 @@ export class MyspacesComponent {
             // Assuming each item in the response is a cart item
             this.cartItems = response.cart; // Assign the response directly to cartItems
           } else {
-            console.error('No cart items found in the response');
+            console.log('No cart items found in the response');
           }      
         }
     );
@@ -44,7 +44,7 @@ export class MyspacesComponent {
     const username = JSON.parse(localStorage.getItem("user") || "")["username"];
     const url = `http://localhost:5000/cancel/${item.name}`;
 
-    this.http.post<any>(url, {}).subscribe(
+    this.http.post<any>(url, {"username":username}).subscribe(
       response => {
         // console.log('Reservation cancelled:', response);
         console.log(response);

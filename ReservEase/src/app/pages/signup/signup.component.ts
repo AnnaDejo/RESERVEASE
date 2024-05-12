@@ -14,7 +14,8 @@ import { Router, RouterLink } from '@angular/router';
 export class SignupComponent {
   fname:string | undefined;lname:string | undefined;eid:string | undefined;username: string | undefined;password: string | undefined;
   designation:string|undefined;state:string | undefined;region:string | undefined;phone:Int16Array | undefined;
-  mail: string | undefined;myreservation=[]
+  mail: string | undefined;myreservation={}
+  message: string | undefined;
   
 
   constructor(private http: HttpClient,private router: Router) { }
@@ -34,9 +35,12 @@ export class SignupComponent {
         console.log("Registration Success")
         this.router.navigate(['/signin']);
        
-      } else {
+      } 
+      else if(response.alert)
+      {
         // Display error message to the user
-        console.log("User Exists")
+        // console.log("User Exists")
+        this.message="Username already Exists"
       }
     });
     
