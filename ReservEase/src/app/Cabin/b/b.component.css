@@ -119,6 +119,7 @@
   background-color: #e7e8f1;
   max-width: 1500px;
   padding: 10px; /* Added padding for better spacing */
+  margin-bottom: 70px;
 }
 
 .bench {
@@ -178,3 +179,32 @@
       margin-bottom: 50px; /* Adjusted margin bottom */
   }
 }
+
+.b1,.b2
+{
+  width:40px;
+  height:40px;
+}
+
+.b1
+{
+  margin-left: 650px;
+  background-color:blue;
+}
+
+.b2
+{
+  margin-left: 150px;
+  background-color:#eb4343;
+
+}
+.abc
+{
+  display:flex;
+}
+
+h6
+{
+  line-break: 40px;
+}
+

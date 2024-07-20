@@ -13,6 +13,7 @@ import { AComponent } from './Cabin/a/a.component';
 import { BComponent } from './Cabin/b/b.component';
 import { AdminprofileComponent } from './Admin/adminprofile/adminprofile.component';
 import { MyspacesComponent } from './pages/myspaces/myspaces.component';
+import { UserlistComponent } from './Admin/userlist/userlist.component';
 
 
 @Component({
@@ -22,7 +23,7 @@ import { MyspacesComponent } from './pages/myspaces/myspaces.component';
     styleUrl: './app.component.css',
     imports: [RouterOutlet, HomeComponent, SigninComponent, SignupComponent, NavComponent, 
             HttpClientModule, MyprofileComponent, ResourcesComponent,MyresourcesComponent,AComponent,BComponent,
-            AdminprofileComponent,MyspacesComponent]
+            AdminprofileComponent,MyspacesComponent,UserlistComponent]
 })
 export class AppComponent {
   title = 'ReservEase';

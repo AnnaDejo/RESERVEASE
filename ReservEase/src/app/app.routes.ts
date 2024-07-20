@@ -12,6 +12,7 @@ import { BComponent } from './Cabin/b/b.component';
 import { MyresourcesComponent } from './pages/myresources/myresources.component';
 import { AdminprofileComponent } from './Admin/adminprofile/adminprofile.component';
 import { MyspacesComponent } from './pages/myspaces/myspaces.component';
+import { UserlistComponent } from './Admin/userlist/userlist.component';
 
 
 export const routes: Routes = [
@@ -27,5 +28,6 @@ export const routes: Routes = [
     {path:'cabinb',component:BComponent},
     {path:'myresource',component:MyresourcesComponent},
     {path:'adminprofile',component:AdminprofileComponent},
-    {path:'myspace',component:MyspacesComponent}
+    {path:'myspace',component:MyspacesComponent},
+    {path:'userlist',component:UserlistComponent}
 ];

@@ -144,7 +144,6 @@
 
 .bench
 {
-  background-color: rgb(88, 174, 228);
   width:80px;
   height:80px;
   margin: auto;
@@ -171,4 +170,38 @@
 .div2
 {
   margin-left: 20px;;
+}
+
+.abc
+{
+  display: flex;
+}
+
+.b2
+{
+  width:35px;
+  height:35px;
+  background-color: #eb4343;
+}
+
+.b1
+{
+  width:35px;
+  height:35px;
+  background-color: blue;
+}
+
+.c,.d{
+  display: flex;
+  margin-left: 30px;
+}
+
+.c
+{
+  margin-top: 210px;
+}
+
+.d
+{
+  margin-top: 20px;
 }

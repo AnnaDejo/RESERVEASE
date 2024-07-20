@@ -7,44 +7,46 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [RouterLink,FormsModule,CommonModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  fname:string | undefined;lname:string | undefined;eid:string | undefined;username: string | undefined;password: string | undefined;
-  designation:string|undefined;state:string | undefined;region:string | undefined;phone:Int16Array | undefined;
-  mail: string | undefined;myreservation={}
+  fname: string | undefined; lname: string | undefined; eid: string | undefined; username: string | undefined; password: string | undefined; confirm: string | undefined;
+  designation: string | undefined; state: string | undefined; region: string | undefined; phone: string | undefined;
+  mail: string | undefined; myreservation = {}
   message: string | undefined;
-  
 
-  constructor(private http: HttpClient,private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   signup() {
     const userData = {
-      lname:this.lname,fname:this.fname,eid:this.eid,designation:this.designation,state:this.state,region:this.region,
-      username: this.username,phone:this.phone,mail: this.mail,password: this.password,myreservation: this.myreservation
+      lname: this.lname, fname: this.fname, eid: this.eid, designation: this.designation, state: this.state, region: this.region,
+      username: this.username, phone: this.phone, mail: this.mail, password: this.password, confirm: this.confirm, myreservation: this.myreservation
     };
 
-    this.http.post('http://localhost:5000/signup', userData)
-    .subscribe((response: any) => {
+    this.http.post('http://localhost:5000/signup', userData).subscribe((response: any) => {
       // Handle response from Flask
-      
+
       if (response.message) {
         // Redirect user to dashboard or another page
         console.log("Registration Success")
         this.router.navigate(['/signin']);
-       
-      } 
-      else if(response.alert)
-      {
-        // Display error message to the user
-        // console.log("User Exists")
-        this.message="Username already Exists"
+
       }
+      if(response.alert6)
+        this.message="Fill all the fields"
+      else if (response.alert1)
+        this.message = "Not a Registered Employee"
+      else if (response.alert2)
+        this.message = "Username already Exists"
+      else if (response.alert3)
+        this.message = "Passwords do not match"
+      else if (response.alert4)
+        this.message = "Not a valid Phone number"
+      else if (response.alert5)
+        this.message = "Not a valid Email id"
     });
-    
-  }
 
   }
-
+}

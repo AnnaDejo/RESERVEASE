@@ -1,4 +1,5 @@
 import json
+import re
 from flask import Flask, jsonify, redirect, render_template, request, session
 from flask_cors import CORS  # type: ignore
 from pymongo import MongoClient # type: ignore
@@ -25,7 +26,7 @@ spaces_collection=db["Spaces"]
 a_collection=db["Cabin A"]
 b_collection=db["CabinB"]
 admin_collection=db["Admin"]
-
+emp_collection=db["employee"]
 
 @app.route('/signin', methods=['POST'])
 def signin():
@@ -79,20 +80,40 @@ def signup():
     username = data.get('username')
     mail = data.get('mail')
     password = data.get('password')
+    confirm=data.get('confirm')
 
-    existing_user = users_collection.find_one({'username': username})
-    if existing_user:
-        return jsonify({'alert': 'User already exists'})
+    if not all([lname, fname, eid, designation, state, region, phone, username, mail, password, confirm]):
+        return jsonify({'alert6': 'Please fill in all fields'})
 
-    myreservations= {} 
-    # Insert user data into MongoDB
-    user = {
-        'lname':lname,'fname':fname,'username': username,'eid':eid,'designation':designation,'state':state,
-        'region':region,'phone':phone,'mail': mail,'password': password,'myreservations':{}
-    }
-    users_collection.insert_one(user)
-    #return {"success":"true"}
-    return jsonify({'message': 'User signed up successfully'})
+    emp=emp_collection.find_one({'eid':eid})
+    if emp:
+        existing_user = users_collection.find_one({'username': username})
+        if existing_user:
+            return jsonify({'alert2': 'User already exists'})
+        
+        if password != confirm:
+            return jsonify({'alert3': 'Password and confirm password do not match'})
+
+        pattern = r'^\d{10}$'
+        if re.match(pattern, phone):
+            pattern1 = r'^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$'
+            if re.match(pattern1, mail):
+                myreservations= {} 
+                # Insert user data into MongoDB
+                user = {
+                    'lname':lname,'fname':fname,'username': username,'eid':eid,'designation':designation,'state':state,
+                    'region':region,'phone':phone,'mail': mail,'password': password,'myreservations':{}
+                }
+                users_collection.insert_one(user)
+                #return {"success":"true"}
+                return jsonify({'message': 'User signed up successfully'})
+            else:
+                return jsonify({'alert5': 'Not a valid Email ID'})
+        else:
+            return jsonify({'alert4': 'Not a valid Phone Number'})
+
+    else:
+        return jsonify({'alert1': 'Not a Registered Employee'})
 
 
 
@@ -107,7 +128,7 @@ def get_product(name):
 
 
 
-@app.route('/product' , methods=['GET'])
+@app.route('/product/<username>' , methods=['GET'])
 def get_products():
     # if not is_user_logged_in():
     #     return jsonify({"redirect":"true"})
@@ -283,6 +304,24 @@ def cancel_reservation(reservation_name):
                     users_collection.update_one({"username": username}, {"$unset": {f"myreservations.{key}": 1}})
                     return jsonify({"message": "Cancelled successfully", "reservation_name": reservation_name})
     return jsonify({"error": "Resource not found"})
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = users_collection.find()
+    user_list = []
+    for user in users:
+        user_list.append({
+            'id': str(user['_id']),
+            'username': user['username'],
+            # Add other fields as needed
+            'eid':user['eid'],
+            'fname':user['fname'],
+            'lname':user['lname'],
+            'phone':user['phone'],
+            'email':user['mail'],
+            'reservation':user['myreservations']
+        })
+    return jsonify(user_list)
 
 if __name__ == '_main_':
     app.run(debug=True)

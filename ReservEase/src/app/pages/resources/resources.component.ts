@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -18,12 +18,27 @@ export class ResourcesComponent implements OnInit {
   status:any;
   private baseUrl = 'http://localhost:5000';
 
-  constructor(public http: HttpClient,private snackBar: MatSnackBar) { }
+  constructor(public http: HttpClient,private snackBar: MatSnackBar, private router : Router) { }
 
   ngOnInit(): void {
-    this.getProducts("/product").subscribe(response => {this.products=response})
-    // console.log(this.products)
-   }
+    try {
+        const userData = localStorage.getItem("user");
+        if (userData) {
+            const user = JSON.parse(userData);
+            const username = user.username;
+            if (username) {
+                this.getProducts("/product").subscribe(response => { this.products = response });
+            } else {
+                this.router.navigate(['/signin']);
+            }
+        } else {
+            this.router.navigate(['/signin']);
+        }
+    } catch (error) {
+        console.error("Error parsing user data:", error);
+        this.router.navigate(['/signin']);
+    }
+}
 
   getProducts(endPoint:String): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl+endPoint);

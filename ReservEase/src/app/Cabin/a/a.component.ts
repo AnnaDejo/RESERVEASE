@@ -41,8 +41,14 @@ export class AComponent implements OnInit {
           duration: 4000, // Duration in milliseconds
           horizontalPosition: 'center', // Position of the notification
           verticalPosition: 'top'
+        })
+        .afterDismissed()
+        .subscribe(() => {
+          setTimeout(() => {
+            location.reload();
+          }, 1); // Reload the page after 1 second
         });
         
       });
-  }
+  }
 }
